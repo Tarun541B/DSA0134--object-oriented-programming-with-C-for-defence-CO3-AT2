@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+
+public:
+    // Constructor
+    Demo(int a) {
+        x = a;
+        cout << "Construct ";
+    }
+
+    // Copy Constructor
+    Demo(const Demo &d) {
+        x = d.x;
+        cout << "Copy ";
+    }
+
+    // Destructor
+    ~Demo() {
+        cout << "Destruct ";
+    }
+
+    // Overloaded + Operator
+    Demo operator+(Demo d) {
+        cout << "Add ";
+        return Demo(x + d.x);
+    }
+};
+
+int main() {
+    Demo d1(5);      // Constructor called
+    Demo d2(10);     // Constructor called
+
+    Demo d3 = d1 + d2; // Copy constructor, operator+, temporary object
+
+    return 0;
+}
